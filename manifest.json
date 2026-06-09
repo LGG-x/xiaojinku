@@ -5,7 +5,7 @@
   "start_url": "accounting-book.html",
   "display": "standalone",
   "background_color": "#e3f2fd",
-  "theme_color": "#4facfe",
+  "theme_color": "#27ae60",
   "orientation": "portrait",
   "icons": [
     {
