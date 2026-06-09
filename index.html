@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="apple-mobile-web-app-title" content="小金库">
+<meta name="apple-mobile-web-app-title" content="沐沐小账本">
 <link rel="manifest" href="manifest.json">
-<title>小金库</title>
+<title>沐沐小账本</title>
 <!--
-  小金库 - 个人财务管理应用
+  沐沐小账本 - 个人财务管理应用
   功能：记账本 / 备忘录 / 纪念日（日历、课表、周期记事）
   技术：纯前端 HTML+CSS+JS，localStorage 持久化，PWA 支持
 -->
@@ -2778,7 +2778,7 @@ function exportAsImage() {
 
   ctx.fillStyle = '#333';
   ctx.font = 'bold 18px "PingFang SC","Microsoft YaHei",sans-serif';
-  ctx.fillText('小金库 - ' + book.name, 32, 46);
+  ctx.fillText('沐沐小账本 - ' + book.name, 32, 46);
 
   ctx.fillStyle = '#999';
   ctx.font = '13px "PingFang SC","Microsoft YaHei",sans-serif';
@@ -2827,7 +2827,7 @@ function exportAsImage() {
 
   ctx.fillStyle = '#bbb';
   ctx.font = '11px "PingFang SC","Microsoft YaHei",sans-serif';
-  ctx.fillText('来自 小金库 · ' + new Date().toLocaleDateString('zh-CN'), 32, y + 54);
+  ctx.fillText('来自 沐沐小账本 · ' + new Date().toLocaleDateString('zh-CN'), 32, y + 54);
 
   // 导出
   canvas.toBlob(blob => {
@@ -2905,7 +2905,7 @@ function exportSingleMemo(id) {
   ctx.font = '11px "PingFang SC","Microsoft YaHei",sans-serif';
   ctx.fillText(formatDate(m.updatedAt), pad + 16, H - 28);
   ctx.textAlign = 'right';
-  ctx.fillText('来自 小金库 · ' + book.name, W - pad - 16, H - 28);
+  ctx.fillText('来自 沐沐小账本 · ' + book.name, W - pad - 16, H - 28);
   ctx.textAlign = 'left';
 
   canvas.toBlob(blob => {
