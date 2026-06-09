@@ -30,6 +30,11 @@ body {
   max-width: 480px;
   margin: 0 auto;
   min-height: 100vh;
+  overflow-x: hidden;
+}
+.form-row input, .note-input, .form-section, .records-section, .summary, .month-nav, .book-tabs-bar {
+  max-width: 100vw;
+  box-sizing: border-box;
 }
 
 /* ---- 头部 & 模式切换 ---- */
@@ -1399,7 +1404,7 @@ const STORAGE_KEY = 'accounting_books';          // 主存储 key
 const OLD_STORAGE_KEY = 'accounting_book_records'; // 旧版兼容
 
 const COLOR_PRESETS = [
-  'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
+  'linear-gradient(135deg, #27ae60 0%, #2ecc71 100%)',
   'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)',
   'linear-gradient(135deg, #fa709a 0%, #fee140 100%)',
   'linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%)',
