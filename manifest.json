@@ -2,7 +2,7 @@
   "name": "沐沐小账本",
   "short_name": "沐沐小账本",
   "description": "个人记账、备忘录、纪念日、课表",
-  "start_url": "accounting-book.html",
+  "start_url": "./",
   "display": "standalone",
   "background_color": "#e3f2fd",
   "theme_color": "#27ae60",
