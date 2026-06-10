@@ -23,7 +23,7 @@
     <button class="mode-tab" id="modeTabMemo" onclick="switchMode('memo')">📝 备忘录</button>
     <button class="mode-tab" id="modeTabAnni" onclick="switchMode('anni')">📅 纪念日</button>
   </div>
-  <h1 id="bookTitle" onclick="showBookSettings()">我的账本 <span style="font-size:12px;opacity:0.7">▾</span></h1>
+  <h1 id="bookTitle" onclick="showBookSettings()">沐沐账本 <span style="font-size:12px;opacity:0.7">▾</span></h1>
   <div class="month-label" id="monthLabel"></div>
 </div>
 
@@ -34,8 +34,8 @@
   <button onclick="goToPrevMonth()" title="上个月">◀</button>
   <div style="display:flex;align-items:center;gap:8px">
     <span class="nav-title" id="navTitle" onclick="showPicker()"></span>
-    <button class="nav-today" id="navAll" onclick="toggleViewAll()" style="font-size:12px;color:#4facfe;background:none;border:none;outline:none;cursor:pointer">全部</button>
-    <span class="nav-today" id="navToday" onclick="goToCurrentMonth()" style="display:none;font-size:12px;color:#4facfe;cursor:pointer">回到本月</span>
+    <button class="nav-today" id="navAll" onclick="toggleViewAll()" style="font-size:12px;color:#27ae60;background:none;border:none;outline:none;cursor:pointer">全部</button>
+    <span class="nav-today" id="navToday" onclick="goToCurrentMonth()" style="display:none;font-size:12px;color:#27ae60;cursor:pointer">回到本月</span>
   </div>
   <button onclick="goToNextMonth()" title="下个月">▶</button>
 </div>
@@ -76,7 +76,7 @@
       <button class="emoji-btn" id="emojiBtn" onclick="toggleEmojiPopup(event)" title="选择图标">😊</button>
     </div>
     <input class="photo-url-input" type="text" id="photoUrlInput" placeholder="输入图片链接..." style="display:none">
-    <textarea class="note-input" id="noteInput" placeholder="备注（可选）" maxlength="500" rows="3" style="margin-bottom:0;resize:vertical;min-height:60px"></textarea>
+    <textarea class="note-input" id="noteInput" placeholder="备注（可选）" maxlength="500" rows="2" style="margin-bottom:0;resize:vertical;min-height:40px"></textarea>
     <button class="emoji-mode-toggle active" id="modeToggleEmoji" onclick="switchIconMode('emoji')">😀</button>
     <button class="emoji-mode-toggle" id="modeTogglePhoto" onclick="switchIconMode('photo')">🖼</button>
   </div>
@@ -97,7 +97,7 @@
       <option value="amount-desc">金额 ↓</option>
       <option value="amount-asc">金额 ↑</option>
     </select>
-    <button class="sort-select" id="btnSelectExport" onclick="toggleSelectMode()" style="color:#4facfe;font-weight:500;cursor:pointer;white-space:nowrap">☑ 导出</button>
+    <button class="sort-select" id="btnSelectExport" onclick="toggleSelectMode()" style="color:#27ae60;font-weight:500;cursor:pointer;white-space:nowrap">☑ 导出</button>
   </div>
   <ul class="record-list" id="recordList"></ul>
   <div class="empty-state" id="emptyState">
@@ -108,7 +108,6 @@
     <button class="clear-btn" onclick="clearAll()">清空本月记录</button>
   </div>
 </div>
-  </div>
   <!-- 导出栏 -->
   <div class="export-bar" id="exportBar" style="display:none;flex-direction:column;gap:8px">
     <div style="display:flex;align-items:center;justify-content:space-between;width:100%">
@@ -129,6 +128,8 @@
 </div><!-- /bookSections -->
 
 <!-- ==================== 备忘录区域 ==================== -->
+<div id="memoSections">
+  
 <div class="month-nav" id="memoMonthNav" style="display:none">
   <button onclick="goToPrevMonth()" title="上个月">◀</button>
   <div style="display:flex;align-items:center;gap:8px">
@@ -151,6 +152,7 @@
     <div class="icon">📭</div>
     <p>还没有备忘录</p>
   </div>
+</div>
 </div>
 
 <!-- 纪念日区域 -->
@@ -175,13 +177,14 @@
       <span id="calTitle" style="font-weight:600;font-size:16px;cursor:pointer" onclick="showCalPicker()"></span>
       <button onclick="changeCalMonth(1)" style="border:none;background:none;font-size:18px;cursor:pointer;color:#4facfe">▶</button>
     </div>
-    <div style="background:#fff;border-radius:12px;padding:12px;box-shadow:0 1px 3px rgba(0,0,0,0.05);margin-bottom:16px">
+    <div style="background:#fff;border-radius:12px;padding:12px;box-shadow:0 2px 6px rgba(0,0,0,0.1);margin-bottom:16px">
       <div style="display:grid;grid-template-columns:repeat(7,1fr);text-align:center;gap:4px;margin-bottom:6px">
         <div style="font-size:12px;color:#999">日</div><div style="font-size:12px;color:#999">一</div><div style="font-size:12px;color:#999">二</div><div style="font-size:12px;color:#999">三</div><div style="font-size:12px;color:#999">四</div><div style="font-size:12px;color:#999">五</div><div style="font-size:12px;color:#999">六</div>
       </div>
       <div id="calGrid" style="display:grid;grid-template-columns:repeat(7,1fr);text-align:center;gap:4px"></div>
     </div>
-    <div style="background:#fff;border-radius:12px;padding:12px 16px;box-shadow:0 1px 3px rgba(0,0,0,0.05)">
+
+    <div style="background:#fff;border-radius:12px;padding:12px 16px;box-shadow:0 2px 6px rgba(0,0,0,0.1)">
       <div style="font-weight:600;font-size:15px;color:#333;margin-bottom:4px">📅 当月节日</div>
       <div id="calFestivals"></div>
     </div>
@@ -198,27 +201,27 @@
       </div>
       <input type="file" id="scheduleFileInput" accept=".csv" onchange="handleScheduleFile(this)" style="display:none">
     </div>
-    <div style="background:#fff;border-radius:12px;overflow-x:auto;box-shadow:0 1px 3px rgba(0,0,0,0.05);-webkit-overflow-scrolling:touch">
+    <div style="background:#fff;border-radius:12px;overflow-x:auto;box-shadow:0 2px 6px rgba(0,0,0,0.1);-webkit-overflow-scrolling:touch">
       <table id="scheduleTable" style="width:100%;border-collapse:collapse;font-size:12px;min-width:640px">
         <thead id="scheduleHead"></thead>
         <tbody id="scheduleBody"></tbody>
       </table>
     </div>
-    <div style="margin-top:6px;color:#999;font-size:11px">点击课时/时间可编辑，点击空表格子添加课程，使用 -课时 删除多余行</div>
+    <div style="margin-top:6px;color:#999;font-size:11px">点击 课时/时间 可编辑，点击空表格添加课程，使用 <span style="margin-top:6px;color:#e74c3c;font-size:11px">-课时</span> 删除多余行</div>
   </div>
   <!-- 周期记事 -->
-  <div id="anniSubPeriodic" style="display:none;padding-top:12px">
-    <div class="book-tabs-bar" id="periodicBookTabsBar" style="margin:0 0 12px">
+  <div id="anniSubPeriodic" style="display:none;padding-top:8px">
+    <div class="book-tabs-bar" id="periodicBookTabsBar" style="margin:0 0 8px">
       <button class="book-tab-add" onclick="addPeriodicBook()" title="新建记事本">＋</button>
     </div>
-    <div style="background:#fff;border-radius:12px;padding:16px;box-shadow:0 1px 3px rgba(0,0,0,0.05);margin-bottom:12px;text-align:center" id="periodicToday">
+    <div style="background:#fff;border-radius:12px;padding:16px;box-shadow:0 2px 6px rgba(0,0,0,0.1);margin-bottom:12px;text-align:center" id="periodicToday">
       <div style="font-size:14px;color:#999" id="periodicDateLabel"></div>
       <div style="font-size:32px;font-weight:700;color:#333;margin:4px 0" id="periodicTimeLabel"></div>
       <div style="display:flex;gap:10px;justify-content:center;margin-top:10px">
         <button onclick="startPeriodicRecord()" style="padding:10px 28px;border:none;border-radius:24px;background:#4facfe;color:#fff;font-size:16px;font-weight:600;cursor:pointer;box-shadow:0 2px 8px rgba(79,172,254,0.3)">▶ 记录</button>
       </div>
     </div>
-    <div style="background:#fff;border-radius:12px;padding:12px 16px;box-shadow:0 1px 3px rgba(0,0,0,0.05)">
+    <div style="background:#fff;border-radius:12px;padding:12px 16px;box-shadow:0 2px 6px rgba(0,0,0,0.1)">
       <div style="font-weight:600;font-size:15px;color:#333;margin-bottom:8px" id="periodicListTitle">📋 记事记录</div>
       <ul class="memo-list" id="periodicList"></ul>
       <div class="empty-state" id="periodicEmpty">
@@ -228,11 +231,11 @@
     </div>
   </div>
   <!-- 底部导航 -->
-  <div style="position:fixed;bottom:0;left:50%;transform:translateX(-50%);max-width:480px;width:100%;display:none;gap:30px;justify-content:center;z-index:30;padding:12px" id="anniBottomNav">
-    <button class="anni-nav-btn" id="anniNavCalendar" onclick="switchAnniSub('calendar')" style="padding:8px 16px;border:1px solid #4facfe;border-radius:20px;background:#fff;font-size:15px;color:#4facfe;cursor:pointer">日历</button>
-    <button class="anni-nav-btn active" id="anniNavAnni" onclick="switchAnniSub('anni')" style="padding:8px 16px;border:1px solid #4facfe;border-radius:20px;background:#4facfe;font-size:15px;color:#fff;cursor:pointer;font-weight:600">纪念日</button>
-    <button class="anni-nav-btn" id="anniNavSchedule" onclick="switchAnniSub('schedule')" style="padding:8px 16px;border:1px solid #e0e0e0;border-radius:20px;background:#f5f5f5;font-size:15px;color:#4facfe;cursor:pointer">课表</button>
-    <button class="anni-nav-btn" id="anniNavPeriodic" onclick="switchAnniSub('periodic')" style="padding:8px 16px;border:1px solid #e0e0e0;border-radius:20px;background:#f5f5f5;font-size:15px;color:#4facfe;cursor:pointer">周期记事</button>
+  <div style="position:fixed;bottom:0;left:50%;transform:translateX(-50%);max-width:480px;width:100%;display:none;gap:60px;justify-content:center;z-index:30;padding:12px" id="anniBottomNav">
+    <button class="anni-nav-btn" id="anniNavCalendar" onclick="switchAnniSub('calendar')" style="padding:8px 8px;border:1px solid #4facfe;border-radius:20px;background:#fff;font-size:13px;color:#4facfe;cursor:pointer">日历</button>
+    <button class="anni-nav-btn active" id="anniNavAnni" onclick="switchAnniSub('anni')" style="padding:8px 8px;border:1px solid #4facfe;border-radius:20px;background:#4facfe;font-size:13px;color:#fff;cursor:pointer;font-weight:600">纪念日</button>
+    <button class="anni-nav-btn" id="anniNavSchedule" onclick="switchAnniSub('schedule')" style="padding:8px 8px;border:1px solid #4facfe;border-radius:20px;background:#f5f5f5;font-size:13px;color:#4facfe;cursor:pointer">课表</button>
+    <button class="anni-nav-btn" id="anniNavPeriodic" onclick="switchAnniSub('periodic')" style="padding:8px 8px;border:1px solid #4facfe;border-radius:20px;background:#f5f5f5;font-size:13px;color:#4facfe;cursor:pointer">周期记事</button>
   </div>
 </div>
 
@@ -266,10 +269,10 @@
 <!-- 备忘录本设置弹窗 -->
 <div class="settings-overlay" id="memoSettingsOverlay" onclick="closeMemoSettings()">
   <div class="settings-panel" onclick="event.stopPropagation()">
-    <h3>⚙️ 备忘本设置</h3>
+    <h3>⚙️ 备忘录设置</h3>
     <div class="settings-field">
-      <label>备忘本名称</label>
-      <input type="text" id="memoBookName" placeholder="输入备忘本名称" maxlength="20">
+      <label>备忘录名称</label>
+      <input type="text" id="memoBookName" placeholder="输入备忘录名称" maxlength="20">
     </div>
     <div class="settings-field">
       <label>背景类型</label>
